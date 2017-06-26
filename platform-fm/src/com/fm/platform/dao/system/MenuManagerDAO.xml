@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fm.platform.dao.system.MenuManagerDAO">
+
+<!-- 初始化菜单树 -->
+<resultMap type="com.fm.platform.daomain.system.Menu" id="menu">
+<result column="menuId" property="menuId" javaType="int" />
+<result column="menuName" property="menuName" javaType="string" />
+<result column="menuUrl" property="URL" javaType="string" />
+<result column="userId" property="userId" javaType="string" />
+<collection column="{user_id=userId,menu_id=menuId}" property="childrenMenu" ofType="menu" javaType="java.util.ArrayList" select="selectChildrenById"/>
+</resultMap>
+	<!-- 根据parent_id，先查出所有一级菜单 -->
+	<select id="getMenus" parameterType="java.util.HashMap" resultMap="menu">
+		  		SELECT 
+		  			t_p.id as menuId, 
+		  			t_p.name as menuName,
+					t_p.url as menuUrl,
+					t_u.id as userId
+				FROM platform.t_xtgl_user t_u,
+					platform.t_xtgl_role t_r,
+					platform.t_xtgl_user_role t_ur,
+			        platform.t_xtgl_role_permission t_rp,
+			        platform.t_xtgl_permission t_p
+				where t_u.id = t_ur.user_id 
+					  and t_r.id = t_ur.role_id
+					  and t_r.id = t_rp.role_id
+					  and t_rp.permission = t_p.id
+					  and user_id=#{userId}
+				      and type='menu'
+				      and parent_id=1
+	</select>
+	<!-- 再递归查询出一级菜单下所有菜单 -->
+	<select id="selectChildrenById" resultMap="menu" parameterType="map">
+			SELECT 
+		  		t_p.id as menuId, 
+	  			t_p.name as menuName,
+				t_p.url as menuUrl,
+				t_u.id as userId
+			FROM platform.t_xtgl_user t_u,
+				platform.t_xtgl_role t_r,
+				platform.t_xtgl_user_role t_ur,
+		        platform.t_xtgl_role_permission t_rp,
+		        platform.t_xtgl_permission t_p
+			where t_u.id = t_ur.user_id 
+				  and t_r.id = t_ur.role_id
+				  and t_r.id = t_rp.role_id
+				  and t_rp.permission = t_p.id
+				  and user_id=#{user_id}
+			      and type='menu'
+			      and parent_id= #{menu_id}
+	</select>
+</mapper>

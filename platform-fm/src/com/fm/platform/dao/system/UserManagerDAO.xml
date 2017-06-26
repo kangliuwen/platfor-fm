@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fm.platform.dao.system.UserManagerDAO">
+
+
+	
+	<select id="queryUser" parameterType="java.util.HashMap"  resultType="com.fm.platform.daomain.system.User">
+  		select user_id as userId,
+  			   user_name as userName,
+  			   user_code as userCode,
+  			   email_address as userAddress,
+  			   password as password,
+  			   available as available,
+  			   dept_id as deptId
+  		 from t_xtgl_user t
+	</select>
+	<select id="getUser" parameterType="string" resultType="com.fm.platform.daomain.system.User">
+		select id as userId,
+  			   user_name as userName,
+  			   user_code as userCode,
+  			   email_address as userAddress,
+  			   password as password,
+  			   available as available,
+  			   dept_id as deptId
+  		 from t_xtgl_user t
+  		 where user_code=#{userCode}
+	</select>
+</mapper>
