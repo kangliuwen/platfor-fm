@@ -3,10 +3,10 @@
 <%@ include file="/jsp/tag.jsp"%>
 <html>
 <head>
-<title>KLW权限管理平台</title>
+<title>通用权限管理平台</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
-<LINK rel="stylesheet" type="text/css" href="<%=path%>js/easyui/styles/default.css">
+<LINK rel="stylesheet" type="text/css" href="<%=path%>/js/easyui/styles/default.css">
 <%@ include file="/jsp/common_css.jsp"%>
 <%@ include file="/jsp/common_js.jsp"%>
 <SCRIPT type="text/javascript">
@@ -83,7 +83,8 @@
 			// menulist += '<li><div><a title="'+n.menuName+'" ref="'+n.menuId+'" href="#" rel="' + n.menuUrl + '" icon="' + n.icon + '"  ><span class="icon '+n.icon+'" >&nbsp;</span><span class="nav">' + n.menuName + '</span></a></div></li> ';
 	        $.each(n.childrenMenu, function(j, o) {//二层处理二级菜单
 	        	//这里自定义了一些属性存放菜单的内容：title存放菜单名称rel存放菜单地址，这些在属性在点击菜单 时要取出值使用
-	        	menulist += '<li><div><a title="'+o.menuName+'" ref="'+o.menuId+'" href="#" rel="' + o.URL + '" icon="' + o.icon + '"  ><span class="icon '+o.icon+'" >&nbsp;</span><span class="nav">' + o.menuName + '</span></a></div></li> ';
+	        	menulist += '<li><div><a title="'+o.menuName+'" ref="'+o.menuId+'" href="#" rel="<%=path%>' + o.URL + '" icon="' + o.icon + '"  ><span class="icon '+o.icon+'" >&nbsp;</span><span class="nav">' + o.menuName + '</span></a></div></li> ';
+	        	//alert('<%=path%>'+o.URL);
 	        });
 			menulist += '</ul>';//生成了菜单的html
 			//自动创建菜单
@@ -138,7 +139,6 @@
 
 	<DIV style="background: rgb(210, 224, 242); height: 30px;" split="false"
 		region="south">
-
 		<DIV class="footer">
 			<!--  -->系统版本号：${version_number}&nbsp;&nbsp;&nbsp;发布日期：${version_date}
 		</DIV>

@@ -1,6 +1,8 @@
 package com.fm.platform.controllers.system;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,9 +30,25 @@ public class MenuManagerController {
     public @ResponseBody Object getMenus(HttpSession session) throws Exception{        
         User user = (User)session.getAttribute("user"); 
         int userId = user.getUserId();
-        List<Menu> menuList = menuManagerService.getMenusByUserId(userId);
+        HashMap<String,Object> paramsMap = new HashMap<String,Object>();
+        paramsMap.put("userId", userId);
+        paramsMap.put("type", "menu");
+        paramsMap.put("parentId", "1");
+        List<Menu> menuList = menuManagerService.getMenusByUserId(paramsMap);
         //userManagerService.getUser(userCode);
         JSONObject menuJson = JsonBiz.getJsonDataForOption(menuList);
         return menuJson;
     }
+    @RequestMapping(value="/getPermission")  
+    public @ResponseBody Object getPermission(HttpSession session) throws Exception{        
+        User user = (User)session.getAttribute("user"); 
+        int userId = user.getUserId();
+        HashMap<String,Object> paramsMap = new HashMap<String,Object>();
+        paramsMap.put("userId", userId);
+        paramsMap.put("type", "permission");
+        List<Menu> menuList = menuManagerService.getMenusByUserId(paramsMap);
+        JSONObject menuJson = JsonBiz.getJsonDataForOption(menuList);
+        return menuJson;
+    }
+    
 }

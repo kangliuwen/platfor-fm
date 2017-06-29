@@ -22,7 +22,7 @@
 <body class="hold-transition login-page">
 <div class="login-box" id="rrapp" v-cloak>
   <div class="login-logo">
-    <b>KLW权限系统</b>
+    <b>通用权限系统</b>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

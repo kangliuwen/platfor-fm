@@ -4,3 +4,4 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<link rel="shortcut icon" type="image/x-icon" href="<%=path%>/favicon.ico" />  

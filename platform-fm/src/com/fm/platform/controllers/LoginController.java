@@ -1,5 +1,7 @@
 package com.fm.platform.controllers;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,8 +18,12 @@ import com.fm.platform.service.system.MenuManagerService;
 import com.fm.platform.service.system.UserManagerService;
 import com.fm.platform.utils.JsonBiz;
 @Controller
-public class LoginController {
+public class LoginController implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Autowired
 	private UserManagerService userManagerService;
 	@Autowired
@@ -62,8 +68,12 @@ public class LoginController {
     }
     @RequestMapping(value="/welcome")  
     public String welocme(HttpSession session){
+    	
+    	HashMap<String,Object> paramsMap = new HashMap<String,Object>();
     	User user = (User)session.getAttribute("user");
-        List<Menu> menuList = menuManagerService.getMenusByUserId(user.getUserId());
+    	paramsMap.put("userId", user.getUserId());
+    	paramsMap.put("type", "menu");
+        List<Menu> menuList = menuManagerService.getMenusByUserId(paramsMap);
         JSONObject menuJson = JsonBiz.getJsonDataForOption(menuList);
     	session.setAttribute("version_number", "V1.0");
     	session.setAttribute("version_date", "2017-06-20");

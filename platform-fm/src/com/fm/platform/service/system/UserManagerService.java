@@ -8,4 +8,5 @@ public interface UserManagerService {
 
 	  public abstract List<User> queryUser(HashMap<String, Object> paramHashMap);
 	  public abstract User getUser(String userCode);
+	  public abstract int getuserCount(HashMap<String, Object> paramHashMap);
 }

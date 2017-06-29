@@ -9,5 +9,5 @@ public interface UserManagerDAO {
 
 	  public abstract List<User> queryUser(HashMap<String, Object> paramHashMap);
 	  public abstract User getUser(String userCode); 
-
+	  public abstract int queryUserCount(HashMap<String, Object> paramHashMap);
 }

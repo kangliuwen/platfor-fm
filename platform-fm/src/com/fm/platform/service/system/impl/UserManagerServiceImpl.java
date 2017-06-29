@@ -22,5 +22,10 @@ public class UserManagerServiceImpl implements UserManagerService{
 	public User getUser(String userCode) {
 		return userManagerDAO.getUser(userCode);
 	}
+	@Override
+	public int getuserCount(HashMap<String, Object> paramHashMap) {
+		
+		return userManagerDAO.queryUserCount(paramHashMap);
+	}
 
 }

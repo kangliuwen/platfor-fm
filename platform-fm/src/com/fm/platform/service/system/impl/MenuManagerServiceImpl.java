@@ -14,9 +14,7 @@ public class MenuManagerServiceImpl implements MenuManagerService {
 	@Autowired
 	private MenuManagerDAO menuManagerDAO;
 	@Override
-	public List<Menu> getMenusByUserId(int userId) {
-		HashMap<String, Object> paramsMap = new HashMap<String,Object>();
-		paramsMap.put("userId", userId);
+	public List<Menu> getMenusByUserId(HashMap<String, Object> paramsMap) {
 		List<Menu> listMenu = menuManagerDAO.getMenus(paramsMap);
 		return listMenu;
 	}
