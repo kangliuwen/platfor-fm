@@ -28,7 +28,7 @@ public class UserManagerController {
 	@Autowired
 	private MenuManagerService menuManagerService;
 	
-	@RequestMapping("getUserList")
+	@RequestMapping("/getUserList")
 	public ModelAndView queryUserList(HttpServletRequest request){
 		HashMap<String, Object> paramMap = new HashMap<String,Object>();
 		List<User> listUser = userManagerService.queryUser(paramMap);
@@ -37,7 +37,7 @@ public class UserManagerController {
 		  mav.setViewName("userList");
 		return mav;
 	}
-	@RequestMapping("query")
+	@RequestMapping("/query")
 	public String query(HttpServletRequest request,HttpSession session){
         User user = (User)session.getAttribute("user"); 
         int userId = user.getUserId();
@@ -49,7 +49,7 @@ public class UserManagerController {
         request.setAttribute("menuList", menuList);
 		return "/user/userList";
 	}
-    @RequestMapping("queryJson")  
+    @RequestMapping("/queryJson")  
     public @ResponseBody Object queryJson(HttpSession session) throws Exception{        
 		HashMap<String, Object> paramMap = new HashMap<String,Object>();
 		List<User> listUser = userManagerService.queryUser(paramMap);

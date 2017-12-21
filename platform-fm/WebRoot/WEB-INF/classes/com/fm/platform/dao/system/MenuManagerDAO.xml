@@ -11,6 +11,7 @@
 <result column="userId" property="userId" javaType="string" />
 <collection column="{user_id=userId,menu_id=menuId}" property="childrenMenu" ofType="menu" javaType="java.util.ArrayList" select="selectChildrenById"/>
 </resultMap>
+	
 	<!-- 根据parent_id，先查出所有一级菜单 -->
 	<select id="getMenus" parameterType="java.util.HashMap" resultMap="menu">
 		  		SELECT 
@@ -26,10 +27,15 @@
 				where t_u.id = t_ur.user_id 
 					  and t_r.id = t_ur.role_id
 					  and t_r.id = t_rp.role_id
-					  and t_rp.permission = t_p.id
+					  and t_rp.permission_id = t_p.id
 					  and user_id=#{userId}
-				      and type='menu'
-				      and parent_id=1
+					  and type=#{type}
+				      <if test="parentId !=null and parentId !=''">
+				      and parent_id=#{parentId}
+				      </if>
+				      <if test="percode !=null and percode !=''">
+				      and percode like '${percode}%'
+				      </if>
 	</select>
 	<!-- 再递归查询出一级菜单下所有菜单 -->
 	<select id="selectChildrenById" resultMap="menu" parameterType="map">
@@ -46,7 +52,7 @@
 			where t_u.id = t_ur.user_id 
 				  and t_r.id = t_ur.role_id
 				  and t_r.id = t_rp.role_id
-				  and t_rp.permission = t_p.id
+				  and t_rp.permission_id = t_p.id
 				  and user_id=#{user_id}
 			      and type='menu'
 			      and parent_id= #{menu_id}

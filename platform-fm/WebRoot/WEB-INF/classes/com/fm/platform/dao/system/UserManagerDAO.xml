@@ -6,13 +6,17 @@
 
 	
 	<select id="queryUser" parameterType="java.util.HashMap"  resultType="com.fm.platform.daomain.system.User">
-  		select user_id as userId,
+  		select id as userId,
   			   user_name as userName,
   			   user_code as userCode,
-  			   email_address as userAddress,
+  			   email_address as emailAddress,
   			   password as password,
   			   available as available,
   			   dept_id as deptId
+  		 from t_xtgl_user t
+	</select>
+	<select id="queryUserCount" parameterType="java.util.HashMap"  resultType="int">
+  		select count(*)
   		 from t_xtgl_user t
 	</select>
 	<select id="getUser" parameterType="string" resultType="com.fm.platform.daomain.system.User">

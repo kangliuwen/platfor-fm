@@ -27,7 +27,7 @@
 				where t_u.id = t_ur.user_id 
 					  and t_r.id = t_ur.role_id
 					  and t_r.id = t_rp.role_id
-					  and t_rp.permission = t_p.id
+					  and t_rp.permission_id = t_p.id
 					  and user_id=#{userId}
 					  and type=#{type}
 				      <if test="parentId !=null and parentId !=''">
@@ -52,7 +52,7 @@
 			where t_u.id = t_ur.user_id 
 				  and t_r.id = t_ur.role_id
 				  and t_r.id = t_rp.role_id
-				  and t_rp.permission = t_p.id
+				  and t_rp.permission_id = t_p.id
 				  and user_id=#{user_id}
 			      and type='menu'
 			      and parent_id= #{menu_id}
