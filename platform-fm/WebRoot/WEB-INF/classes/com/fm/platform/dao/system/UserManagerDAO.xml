@@ -11,9 +11,15 @@
   			   user_code as userCode,
   			   email_address as emailAddress,
   			   password as password,
+  			   phone as phone,
+  			   remark as remark,
   			   available as available,
-  			   dept_id as deptId
+  			   dept_id as deptId,
+  			   is_stop as isStop,
+  			   last_login_ip as lastLoginIp,
+  			   last_login_date as lastLoginDate
   		 from t_xtgl_user t
+  		 order by last_login_date asc
 	</select>
 	<select id="queryUserCount" parameterType="java.util.HashMap"  resultType="int">
   		select count(*)
@@ -23,10 +29,15 @@
 		select id as userId,
   			   user_name as userName,
   			   user_code as userCode,
-  			   email_address as userAddress,
+  			   email_address as emailAddress,
   			   password as password,
+  			   phone as phone,
+  			   remark as remark,
   			   available as available,
-  			   dept_id as deptId
+  			   dept_id as deptId,
+  			   is_stop as isStop,
+  			   last_login_ip as lastLoginIp,
+  			   last_login_date as lastLoginDate
   		 from t_xtgl_user t
   		 where user_code=#{userCode}
 	</select>

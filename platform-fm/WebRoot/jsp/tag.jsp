@@ -5,19 +5,42 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <link rel="shortcut icon" type="image/x-icon" href="<%=path%>/favicon.ico" />  
-<link rel="stylesheet" type="text/css"  href="<%=path%>/styles/style.css"/> 
-<LINK rel="stylesheet" type="text/css"	href="<%=path%>/js/easyui/themes/default/easyui.css" />
-<LINK rel="stylesheet" type="text/css"	href="<%=path%>/js/easyui/themes/icon.css">
-<link rel="stylesheet" type="text/css" 	href="<%=path%>/js/My97DatePicker/skin/WdatePicker.css" />
-<link rel="stylesheet" type="text/css" 	href="<%=path%>/js/formvalidator/style/validator.css"/>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.4.4.min.js"></script>
-<SCRIPT type="text/javascript" src="<%=path%>/js/easyui/jquery.easyui.min.1.2.2.js"></SCRIPT>
-<script type="text/javascript" src="<%=path%>/js/easyui/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="<%=path%>/js/jquery.form.min.js"></script>
-<script type="text/javascript" src="<%=path%>/js/custom.jquery.form.js"></script>
-<script type="text/javascript" src="<%=path%>/js/custom.box.main.js"></script>
-<script type="text/javascript" src="<%=path%>/js/jquery.ajax.custom.extend.js"></script>
-<SCRIPT type="text/javascript" src="<%=path%>/js/menuload.js"></SCRIPT>
-<script type="text/javascript" src="<%=path%>/js/My97DatePicker/WdatePicker.js"></script>
-<script src="<%=path%>/js/jqueryvalidator/formValidator-4.1.3.js" type="text/javascript" charset="UTF-8"></script>
-<script src="<%=path%>/js/jqueryvalidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+
+<!-- basic styles -->
+<link rel="stylesheet" href="<%=path%>/js/bootstrap-3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="<%=path%>/css/font-awesome.min.css" />
+<link rel="stylesheet" href="<%=path%>/css/jquery-ui-1.10.3.full.min.css" />
+<link rel="stylesheet" href="<%=path%>/css/datepicker.css" />
+<link rel="stylesheet" href="<%=path%>/css/ui.jqgrid.css" />
+		
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+<link rel="stylesheet" href="<%=path%>/css/ace.min.css" />
+<link rel="stylesheet" href="<%=path%>/css/ace-rtl.min.css" />
+<link rel="stylesheet" href="<%=path%>/css/ace-skins.min.css" />
+
+
+<script src="<%=path%>/js/ace-extra.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+	window.jQuery || document.write("<script src='<%=path%>/js/jquery-2.0.3.min.js'>"+"<"+"script>");
+</script>
+<script type="text/javascript">
+	if("ontouchend" in document) document.write("<script src='<%=path%>/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
+</script>
+<script src="<%=path%>/js/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="<%=path%>/js/typeahead-bs2.min.js"></script>
+<script src="<%=path%>/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="<%=path%>/js/jquery.ui.touch-punch.min.js"></script>
+<script src="<%=path%>/js/jquery.slimscroll.min.js"></script>
+<script src="<%=path%>/js/jquery.easy-pie-chart.min.js"></script>
+<script src="<%=path%>/js/jquery.sparkline.min.js"></script>
+<script src="<%=path%>/js/bootstrap-datepicker.min.js"></script>
+<script src="<%=path%>/js/jqGrid/jquery.jqGrid.min.js"></script>
+<script src="<%=path%>/js/jqGrid/i18n/grid.locale-en.js"></script>
+<script src="<%=path%>/js/flot/jquery.flot.min.js"></script>
+<script src="<%=path%>/js/flot/jquery.flot.pie.min.js"></script>
+<script src="<%=path%>/js/flot/jquery.flot.resize.min.js"></script>
+<script src="<%=path%>/js/ace-elements.min.js"></script>
+<script src="<%=path%>/js/ace.min.js"></script>
+<script src="<%=path%>/js/bootbox.min.js"></script>
+<script src="<%=path%>/js/ace-extra.min.js"></script>

@@ -18,6 +18,7 @@
 		  			t_p.id as menuId, 
 		  			t_p.name as menuName,
 					t_p.url as menuUrl,
+					t_p.icon as icon,
 					t_u.id as userId
 				FROM platform.t_xtgl_user t_u,
 					platform.t_xtgl_role t_r,
@@ -30,6 +31,7 @@
 					  and t_rp.permission_id = t_p.id
 					  and user_id=#{userId}
 					  and type=#{type}
+					  and is_use = 1
 				      <if test="parentId !=null and parentId !=''">
 				      and parent_id=#{parentId}
 				      </if>
@@ -42,7 +44,8 @@
 			SELECT 
 		  		t_p.id as menuId, 
 	  			t_p.name as menuName,
-				t_p.url as menuUrl,
+				t_p.url as Url,
+				t_p.icon as icon,
 				t_u.id as userId
 			FROM platform.t_xtgl_user t_u,
 				platform.t_xtgl_role t_r,
@@ -55,6 +58,26 @@
 				  and t_rp.permission_id = t_p.id
 				  and user_id=#{user_id}
 			      and type='menu'
+			      and is_use = 1
 			      and parent_id= #{menu_id}
+	</select>
+	<select id="getMenuById" parameterType="java.util.HashMap" resultMap="menu">
+		  		SELECT 
+		  			t_p.id as menuId, 
+		  			t_p.name as menuName,
+					t_p.url as menuUrl,
+					t_p.icon as icon,
+					t_u.id as userId
+				FROM platform.t_xtgl_user t_u,
+					platform.t_xtgl_role t_r,
+					platform.t_xtgl_user_role t_ur,
+			        platform.t_xtgl_role_permission t_rp,
+			        platform.t_xtgl_permission t_p
+				where t_u.id = t_ur.user_id 
+					  and t_r.id = t_ur.role_id
+					  and t_r.id = t_rp.role_id
+					  and t_rp.permission_id = t_p.id
+					  and t_p.id=#{menuId}
+
 	</select>
 </mapper>
