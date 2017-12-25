@@ -18,5 +18,10 @@ public class MenuManagerServiceImpl implements MenuManagerService {
 		List<Menu> listMenu = menuManagerDAO.getMenus(paramsMap);
 		return listMenu;
 	}
+	@Override
+	public Menu getMenuById(HashMap<String, Object> paramsMap) {
+		Menu menu = menuManagerDAO.getMenuById(paramsMap);
+		return menu;
+	}
 
 }

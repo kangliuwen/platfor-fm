@@ -28,13 +28,15 @@ public class UserManagerController {
 	@Autowired
 	private MenuManagerService menuManagerService;
 	
-	@RequestMapping("/getUserList")
-	public ModelAndView queryUserList(HttpServletRequest request){
+	@RequestMapping("/userManager")
+	public ModelAndView queryUserList(HttpServletRequest request,HttpSession session){
 		HashMap<String, Object> paramMap = new HashMap<String,Object>();
 		List<User> listUser = userManagerService.queryUser(paramMap);
 		  ModelAndView mav = new ModelAndView();
 		  mav.addObject("listUser",listUser);
 		  mav.setViewName("userList");
+	      session.setAttribute("roleList", "FE:1;IN:2;TN:3;AR:4");
+
 		return mav;
 	}
 	@RequestMapping("/query")

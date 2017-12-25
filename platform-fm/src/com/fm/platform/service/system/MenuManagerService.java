@@ -8,4 +8,5 @@ import com.fm.platform.daomain.system.Menu;
 public interface MenuManagerService {
 
 	public List<Menu> getMenusByUserId(HashMap<String, Object> paramsMap);
+	public Menu getMenuById(HashMap<String, Object> paramsMap);
 }

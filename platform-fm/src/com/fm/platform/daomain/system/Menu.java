@@ -9,6 +9,7 @@ public class Menu {
 	public String URL;
 	public String isUse;
 	public String userId;
+	public String icon;
 	private List<Menu> childrenMenu; 
 	public int getMenuId() {
 		return menuId;
@@ -45,6 +46,12 @@ public class Menu {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 	
 }

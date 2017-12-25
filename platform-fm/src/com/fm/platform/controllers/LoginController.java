@@ -37,10 +37,10 @@ public class LoginController implements Serializable{
 	   * @throws Exception
 	   */
     @RequestMapping(value="/login")  
-    public @ResponseBody Object login(HttpSession session,String userName,String password) throws Exception{        
+    public @ResponseBody Object login(HttpSession session,String userName,String passWord) throws Exception{        
     	if(userName!=null&&!userName.equals("")){
     		User user = userManagerService.getUser(userName);
-        	if(user!=null&&user.getPassword().equals(password)){
+        	if(user!=null&&user.getPassword().equals(passWord)){
                 session.setAttribute("user", user);  
                 return JsonBiz.isSucceed(true, "登陆成功！");
         	}
@@ -65,6 +65,10 @@ public class LoginController implements Serializable{
     @RequestMapping(value="/index")  
     public String index(){
     	return "login/index";
+    }
+    @RequestMapping(value="/first")  
+    public String first(){
+    	return "login/first";
     }
     @RequestMapping(value="/welcome")  
     public String welocme(HttpSession session){

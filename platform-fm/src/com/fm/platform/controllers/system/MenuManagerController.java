@@ -33,10 +33,23 @@ public class MenuManagerController {
         HashMap<String,Object> paramsMap = new HashMap<String,Object>();
         paramsMap.put("userId", userId);
         paramsMap.put("type", "menu");
-        paramsMap.put("parentId", "1");
+        paramsMap.put("parentId", 1);
         List<Menu> menuList = menuManagerService.getMenusByUserId(paramsMap);
         //userManagerService.getUser(userCode);
         JSONObject menuJson = JsonBiz.getJsonDataForOption(menuList);
+        return menuJson;
+    }
+    @RequestMapping(value="/getMenuById")  
+    public @ResponseBody Object getMenuById(HttpSession session,String menuId) throws Exception{        
+        User user = (User)session.getAttribute("user"); 
+        int userId = user.getUserId();
+        HashMap<String,Object> paramsMap = new HashMap<String,Object>();
+        paramsMap.put("userId", userId);
+        paramsMap.put("type", "menu");
+        paramsMap.put("menuId", menuId);
+        Menu menu = menuManagerService.getMenuById(paramsMap);
+        //userManagerService.getUser(userCode);
+        JSONObject menuJson = JsonBiz.getJsonDataForOneRecord(menu);
         return menuJson;
     }
     @RequestMapping(value="/getPermission")  
